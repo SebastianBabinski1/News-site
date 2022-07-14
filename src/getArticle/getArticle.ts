@@ -1,3 +1,5 @@
+import styles from './getArticle.module.css'
+
 interface Props {
   title: string;
   newsSite: string;
@@ -10,8 +12,7 @@ interface Props {
 const getArticle = ({ title, newsSite, publishedAt, summary, url, imageUrl }: Props) => {
   return (
     `
-    <div class='article'>
-      <div class='article__content'>
+      <div class=${styles.article__content}>
         <p>title: ${title}</p>
         <p>newsSite: ${newsSite}</p>
         <p>publishedAt: ${publishedAt}</p>
@@ -20,8 +21,7 @@ const getArticle = ({ title, newsSite, publishedAt, summary, url, imageUrl }: Pr
           <a href=${url} target="_blank" rel="noopener noreferrer"}>Read article</a>
         </button>
       </div >
-      <img class='article__image' src=${imageUrl} alt='image'>
-      </div>
+      <img class=${styles.article__image} src=${imageUrl} alt='image'>
     `
   )
 }

@@ -3,10 +3,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src',
+  entry: {
+    index: './src',
+    library: './src/favouriteArticles'
+  },
   output: {
+    filename: '[name].js',
     path: __dirname + '/dist',
-    filename: 'index.js',
   },
   mode: 'development',
   devtool: 'source-map',
@@ -32,6 +35,27 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
     ],
   },
 
@@ -40,5 +64,8 @@ module.exports = {
     port: 9000,
   },
 
-  plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
+  plugins: [
+    new HtmlWebpackPlugin({ filename: 'index.html', template: 'index.html', chunks: ['index'] }),
+    new HtmlWebpackPlugin({ filename: 'library.html', template: 'library.html', chunks: ['library'] }),
+  ],
 };

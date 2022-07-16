@@ -1,6 +1,4 @@
-
-const handleCounter = async (renderedArticles: number) => {
-
+export const handleCounterChange = async (renderedArticles: number): Promise<void> => {
   try {
     const response = await fetch('https://api.spaceflightnewsapi.net/v3/articles/count')
     const numberOfArticles = await response.json()
@@ -11,8 +9,5 @@ const handleCounter = async (renderedArticles: number) => {
   }
   catch (error) {
     console.log(error);
-
   }
 }
-
-export default handleCounter

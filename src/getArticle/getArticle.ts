@@ -1,17 +1,8 @@
-import styles from './getArticle.module.css'
+import { Article } from '..'
+import styles from './getArticle.module.scss'
 
-interface Props {
-  title: string;
-  newsSite: string;
-  publishedAt: string;
-  summary: string;
-  url: string;
-  imageUrl: string;
-}
-
-const getArticle = ({ title, newsSite, publishedAt, summary, url, imageUrl }: Props) => {
-  return (
-    `
+export const getArticle = ({ title, newsSite, publishedAt, summary, url, imageUrl }: Article) =>
+  `
       <div class=${styles.article__content}>
         <p>title: ${title}</p>
         <p>newsSite: ${newsSite}</p>
@@ -23,7 +14,3 @@ const getArticle = ({ title, newsSite, publishedAt, summary, url, imageUrl }: Pr
       </div >
       <img class=${styles.article__image} src=${imageUrl} alt='image'>
     `
-  )
-}
-
-export default getArticle

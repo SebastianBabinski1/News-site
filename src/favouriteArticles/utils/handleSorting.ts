@@ -1,8 +1,19 @@
 import { Article } from "../.."
 import { getArticle } from "../../getArticle"
 import { handleButtonText, handleClick, url } from "../../utils"
+import styles from "../../style.module.scss";
+
 
 const handleSortingButton = async (type: string, direction: string) => {
+  const navigation = document.getElementById("navigation") as HTMLFormElement
+  navigation.classList.add(styles.navigation)
+
+  const navigationArticles = document.getElementById("navigationArticles") as HTMLFormElement
+  navigationArticles.classList.add(styles.navigationArticles)
+
+  const buttons = document.getElementById("buttons") as HTMLFormElement
+  buttons.classList.add(styles.buttons)
+
   const content = document.getElementById("content") as HTMLDivElement
 
   const articlesIds = localStorage.getItem('ids') as string
@@ -50,10 +61,13 @@ const handleSortingButton = async (type: string, direction: string) => {
 
           sortedArticlesData.forEach(el => {
             const article = document.createElement('div')
+            article.classList.add(styles.article)
             article.innerHTML = getArticle(el)
 
             const button = document.createElement('button')
             button.id = (el.id).toString()
+            button.classList.add(styles.libraryButton)
+
             button.innerText = handleButtonText(el.id)
             button.addEventListener('click', () => {
               handleClick(el.id)
@@ -70,16 +84,35 @@ const handleSortingButton = async (type: string, direction: string) => {
 
           const getSortedByTitle = () => {
             const articlesSecondCopy = [...articles]
-            return articlesSecondCopy.sort((current, next) => {
-              switch (direction) {
-                case 'ascending':
-                  return parseInt(current.title) - parseInt(next.title)
-                case 'descending':
-                  return parseInt(next.title) - parseInt(current.title)
-                default:
-                  return parseInt(current.title) - parseInt(next.title)
+
+            const compareAscending = (a: Article, b: Article) => {
+              if (a.title < b.title) {
+                return -1;
               }
-            })
+              if (a.title > b.title) {
+                return 1;
+              }
+              return 0;
+            }
+
+            const compareDescending = (a: Article, b: Article) => {
+              if (b.title < a.title) {
+                return -1;
+              }
+              if (b.title > a.title) {
+                return 1;
+              }
+              return 0;
+            }
+
+            switch (direction) {
+              case 'ascending':
+                return articlesSecondCopy.sort(compareAscending)
+              case 'descending':
+                return articlesSecondCopy.sort(compareDescending)
+              default:
+                return articlesSecondCopy.sort(compareAscending)
+            }
           }
           const sortedArticlesDataByTitle = getSortedByTitle()
 
@@ -88,9 +121,11 @@ const handleSortingButton = async (type: string, direction: string) => {
           sortedArticlesDataByTitle.forEach(el => {
             const article = document.createElement('div')
             article.innerHTML = getArticle(el)
+            article.classList.add(styles.article)
 
             const button = document.createElement('button')
             button.id = (el.id).toString()
+            button.classList.add(styles.libraryButton)
             button.innerText = handleButtonText(el.id)
             button.addEventListener('click', () => {
               handleClick(el.id)

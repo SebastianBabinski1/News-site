@@ -1,6 +1,6 @@
 import { handleButtonText } from './handleButtonText'
 import { handleClick } from './handleClick'
-import { handleCounterChange } from './handleCounterChange'
+import { handleCounterChange } from './handleCounterChange/handleCounterChange'
 
 const url = 'https://api.spaceflightnewsapi.net/v3/articles'
 

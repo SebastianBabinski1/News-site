@@ -1,9 +1,10 @@
-import handleSortingButton from "./utils/handleSorting"
+import handleSortingButton from "./utils/handleSorting";
+import styles from './sortingButton.module.scss';
 
 const sortingButton = (sortingType: string): HTMLElement => {
 
   const button = document.createElement('button')
-
+  button.classList.add(styles.button)
   button.innerText = `${sortingType}: ascending`
 
   let isAscending = true

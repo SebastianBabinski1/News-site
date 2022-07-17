@@ -10,13 +10,14 @@
 
 <body>
   <div id="root">
-    <nav>
-      <a href="index.html">Articles</a>
+    <nav id="navigation">
+      <a id="navigationArticles" href="index.html">Articles</a>
       <a href="library.html">Library</a>
     </nav>
     <form id="form">
-      <label for="input">Number of articles:</label>
-      <input type="number" id="input" name="quantity" min="1">
+      <label id="formLabel" for="input">Fetching articles:</label>
+      <input id="formInput" type="number" name="quantity" min="1">
+      <button id="formButton" type="submit">Apply</button>
     </form>
     <div id="counter"></div>
     <div id="content"></div>

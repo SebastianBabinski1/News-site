@@ -1,3 +1,5 @@
+import styles from './handleCounterChange.module.scss'
+
 export const handleCounterChange = async (renderedArticles: number): Promise<void> => {
   try {
     const response = await fetch('https://api.spaceflightnewsapi.net/v3/articles/count')
@@ -5,7 +7,12 @@ export const handleCounterChange = async (renderedArticles: number): Promise<voi
 
     const counter = document.getElementById('counter') as HTMLDivElement
 
-    counter.innerHTML = `<p>Rendered articles:</p><p>${renderedArticles}/${numberOfArticles}</p>`
+    counter.innerHTML = `
+    <div class=${styles.wrapper}>
+      <p class=${styles.text}>Articles:</p>
+      <p class=${styles.text}>${renderedArticles}/${numberOfArticles}</p>
+    </div>
+    `
   }
   catch (error) {
     console.log(error);

@@ -1,7 +1,9 @@
 import styles from "./style.module.scss";
 import './styles/styles.scss'
-import { handleCounterChange, handleClick, handleButtonText } from "./utils";
+import { handleCounterChange, handleLibrarySavingClick, handleButtonText } from "./utils";
 import { getArticle } from "./getArticle"
+import libraryButton from "./utils/libraryButton/libraryButton";
+import articleWrapper from "./utils/articleWrapper/articleWrapper";
 
 export interface Article {
   id: number;
@@ -33,7 +35,6 @@ formButton.classList.add(styles.formButton)
 
 const content = document.getElementById("content") as HTMLDivElement
 
-
 let totalArticles = 0
 let numberOfFetchingArticles = 15
 
@@ -43,18 +44,9 @@ const getArticles = async (numberOfArtiles: number = numberOfFetchingArticles) =
     const data: Article[] = await response.json()
 
     data.map((item) => {
-      const article = document.createElement('div');
+      const article = articleWrapper(item)
 
-      article.classList.add(`${styles.article}`)
-      article.innerHTML = getArticle(item)
-
-      const button = document.createElement('button')
-
-      button.id = (item.id).toString()
-      button.classList.add(styles.libraryButton)
-      button.innerText = handleButtonText(item.id)
-      button.addEventListener('click', () => handleClick(item.id)
-      )
+      const button = libraryButton(item.id)
 
       article.appendChild(button)
       content.appendChild(article)
@@ -74,9 +66,14 @@ window.onload = () => getArticles()
 const handleSubmit = (event: SubmitEvent) => {
   event.preventDefault()
 
-  const inputValue = parseInt(formInput.value)
-  numberOfFetchingArticles = inputValue
-  formInput.value = ''
+  if (formInput.value === '') {
+    alert('Fetching articles must be greather than 0');
+
+  } else {
+    const inputValue = parseInt(formInput.value)
+    numberOfFetchingArticles = inputValue
+    formInput.value = ''
+  }
 }
 
 window.addEventListener('scroll', () => {
@@ -85,7 +82,5 @@ window.addEventListener('scroll', () => {
     getArticles()
   }
 })
-
-
 
 form.addEventListener('submit', handleSubmit)

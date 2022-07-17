@@ -1,8 +1,9 @@
-import { Article } from "../.."
-import { getArticle } from "../../getArticle"
-import { handleButtonText, handleClick, url } from "../../utils"
-import sortingButton from "../sortingButton"
-import styles from '../../style.module.scss'
+import { Article } from "../../.."
+import { url } from "../../../utils"
+import sortingButton from "../sortingButton/sortingButton"
+import styles from '../../../style.module.scss'
+import libraryButton from "../../../utils/libraryButton/libraryButton"
+import articleWrapper from "../../../utils/articleWrapper/articleWrapper"
 
 
 const handleFavouriteArticles = () => {
@@ -33,16 +34,11 @@ const handleFavouriteArticles = () => {
       const response = await fetch(`${url}/${id}`)
       const data: Article = await response.json()
 
-      const article = document.createElement('div');
-      article.classList.add(styles.article)
-      article.innerHTML = getArticle(data)
+      const article = articleWrapper(data)
 
-      const button = document.createElement('button')
-      button.id = (data.id).toString()
-      button.classList.add(styles.libraryButton)
-      button.innerText = handleButtonText(data.id)
+      const button = libraryButton(id)
+
       button.addEventListener('click', () => {
-        handleClick(data.id)
         content.removeChild(article)
       }
       )
@@ -50,6 +46,7 @@ const handleFavouriteArticles = () => {
       content.appendChild(article)
     })
   } else {
+
     const paragraph = document.createElement('p')
     paragraph.innerText = "Your library is empty"
     content.appendChild(paragraph)

@@ -1,4 +1,4 @@
-import handleSortingButton from "./utils/handleSorting";
+import handleSortingButton from "../handleSorting/handleSorting";
 import styles from './sortingButton.module.scss';
 
 const sortingButton = (sortingType: string): HTMLElement => {

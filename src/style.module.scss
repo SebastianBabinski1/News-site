@@ -1,32 +1,5 @@
 @import '/src/styles/utils.scss';
 
-.article {
-  width: 90%;
-  height: 400px;
-  margin: 20px auto;
-  display: flex;
-  position: relative;
-
-  @media (min-width: $screen-md) {
-    max-width: 800px;
-  }
-}
-
-.libraryButton {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  border: none;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: #414141;
-    color: white;
-    transition: all 0.5s ease;
-    cursor: pointer;
-  }
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -34,7 +7,7 @@
   max-width: 200px;
   margin: 10px auto;
   padding: 10px;
-  background-color: #414141;
+  background-color: $brown;
   color: white;
   border-radius: 5px;
 
@@ -66,7 +39,7 @@
   justify-content: center;
   margin: 0 auto;
   padding: 10px;
-  background-color: #414141;
+  background-color: $brown;
   color: white;
 
   &Articles {
@@ -78,6 +51,6 @@
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: #414141;
+  background-color: $brown;
   color: white;
 }

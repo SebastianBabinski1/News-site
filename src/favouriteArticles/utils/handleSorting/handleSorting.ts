@@ -1,7 +1,9 @@
-import { Article } from "../.."
-import { getArticle } from "../../getArticle"
-import { handleButtonText, handleClick, url } from "../../utils"
-import styles from "../../style.module.scss";
+import { Article } from "../../.."
+import { url } from "../../../utils"
+import styles from "../../../style.module.scss";
+import libraryButton from "../../../utils/libraryButton/libraryButton";
+import articleWrapper from "../../../utils/articleWrapper/articleWrapper";
+import { compareAscending, compareDescending } from "./filters";
 
 
 const handleSortingButton = async (type: string, direction: string) => {
@@ -60,17 +62,11 @@ const handleSortingButton = async (type: string, direction: string) => {
           content.innerHTML = ''
 
           sortedArticlesData.forEach(el => {
-            const article = document.createElement('div')
-            article.classList.add(styles.article)
-            article.innerHTML = getArticle(el)
+            const article = articleWrapper(el)
 
-            const button = document.createElement('button')
-            button.id = (el.id).toString()
-            button.classList.add(styles.libraryButton)
+            const button = libraryButton(el.id)
 
-            button.innerText = handleButtonText(el.id)
             button.addEventListener('click', () => {
-              handleClick(el.id)
               content.removeChild(article)
             }
             )
@@ -80,30 +76,8 @@ const handleSortingButton = async (type: string, direction: string) => {
           break
 
         case 'title':
-          console.log('by title')
-
           const getSortedByTitle = () => {
             const articlesSecondCopy = [...articles]
-
-            const compareAscending = (a: Article, b: Article) => {
-              if (a.title < b.title) {
-                return -1;
-              }
-              if (a.title > b.title) {
-                return 1;
-              }
-              return 0;
-            }
-
-            const compareDescending = (a: Article, b: Article) => {
-              if (b.title < a.title) {
-                return -1;
-              }
-              if (b.title > a.title) {
-                return 1;
-              }
-              return 0;
-            }
 
             switch (direction) {
               case 'ascending':
@@ -119,27 +93,23 @@ const handleSortingButton = async (type: string, direction: string) => {
           content.innerHTML = ''
 
           sortedArticlesDataByTitle.forEach(el => {
-            const article = document.createElement('div')
-            article.innerHTML = getArticle(el)
-            article.classList.add(styles.article)
+            const article = articleWrapper(el)
 
-            const button = document.createElement('button')
-            button.id = (el.id).toString()
-            button.classList.add(styles.libraryButton)
-            button.innerText = handleButtonText(el.id)
+            const button = libraryButton(el.id)
+
             button.addEventListener('click', () => {
-              handleClick(el.id)
               content.removeChild(article)
             }
             )
+
             article.appendChild(button)
             content.appendChild(article)
           })
           break
       }
     }
-    handleSorting()
 
+    handleSorting()
 
   } else {
     console.log('Nothing to sort :(')

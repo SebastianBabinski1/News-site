@@ -1,0 +1,13 @@
+@import '/src/styles/utils.scss';
+
+.article {
+  width: 90%;
+  height: 400px;
+  margin: 20px auto;
+  display: flex;
+  position: relative;
+
+  @media (min-width: $screen-md) {
+    max-width: 800px;
+  }
+}

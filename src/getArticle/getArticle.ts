@@ -10,7 +10,7 @@ export const getArticle = ({ title, newsSite, publishedAt, summary, url, imageUr
           <p>${shortSummary}</p>
           <p class=${styles.publishedAt}>${newsSite}, ${shortPublishingDate}</p>
           <button class=${styles.button}>
-            <a href=${url} target="_blank" rel="noopener noreferrer"}>More >></a>
+            <a href=${url} target="_blank" rel="noopener noreferrer"}>Read article >> </a>
           </button>
         </div >
         <img class=${styles.image} src=${imageUrl} alt='image'>

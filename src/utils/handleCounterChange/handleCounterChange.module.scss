@@ -1,8 +1,10 @@
+@import '/src/styles/utils.scss';
+
 .wrapper {
   max-width: 200px;
   margin: 10px auto;
   padding: 10px;
-  background-color: #414141;
+  background-color: $brown;
   color: white;
   border-radius: 5px;
 }

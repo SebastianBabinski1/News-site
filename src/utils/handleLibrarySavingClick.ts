@@ -1,9 +1,9 @@
 export enum ButtonText {
-  ADD = 'Add to library',
-  REMOVE = 'Remove from library'
+  ADD = 'Add to Library',
+  REMOVE = 'Remove from Library'
 }
 
-export const handleClick = (id: number): void => {
+export const handleLibrarySavingClick = (id: number): void => {
   const parsedId = id.toString()
   const button = document.getElementById(parsedId) as HTMLButtonElement
 

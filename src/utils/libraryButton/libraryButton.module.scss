@@ -1,0 +1,16 @@
+@import '/src/styles/utils.scss';
+
+.libraryButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $brown;
+    color: white;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+}

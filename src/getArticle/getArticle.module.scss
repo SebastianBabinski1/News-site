@@ -1,3 +1,5 @@
+@import '/src/styles/utils.scss';
+
 .content {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.9);
@@ -13,7 +15,6 @@
   height: 100%;
   z-index: -1;
   border-radius: 10px;
-
 }
 
 .title {
@@ -21,13 +22,17 @@
 }
 
 .button {
-  background: none;
+  background-color: $brown;
+  border-radius: 5px;
+  color: white;
   border: none;
+  padding: 2px 10px;
+  margin-top: 5px;
 }
 
 .publishedAt {
   display: inline-block;
-  background-color: #414141;
+  background-color: $brown;
   color: white;
   border-radius: 5px;
   padding: 2px 10px;

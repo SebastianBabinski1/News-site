@@ -1,2 +1,2 @@
-import handleFavouriteArticles from "./handleFavouriteArticles"
+import handleFavouriteArticles from "./utils/handleFavouriteArticles"
 handleFavouriteArticles()

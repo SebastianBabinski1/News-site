@@ -1,7 +1,4 @@
-export enum ButtonText {
-  ADD = 'Add to Library',
-  REMOVE = 'Remove from Library'
-}
+import { addImage, removeImage } from "./buttonImages"
 
 export const handleLibrarySavingClick = (id: number): void => {
   const parsedId = id.toString()
@@ -18,17 +15,18 @@ export const handleLibrarySavingClick = (id: number): void => {
 
       localStorage.setItem('ids', JSON.stringify(filteredTable))
 
-      button.innerText = ButtonText.ADD
+      button.innerHTML = addImage
     } else {
       parsedArticlesIds.push(id)
       localStorage.setItem('ids', JSON.stringify(parsedArticlesIds))
 
-      button.innerText = ButtonText.REMOVE
+      button.innerHTML = removeImage
     }
   } else {
     localStorage.setItem('ids', JSON.stringify([id]))
 
-    button.innerText = ButtonText.ADD
+    button.innerHTML = removeImage
+
   }
   console.log(localStorage)
 }

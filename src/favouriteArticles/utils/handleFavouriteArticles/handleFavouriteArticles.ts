@@ -2,6 +2,7 @@ import { Article } from "../../.."
 import { url } from "../../../utils"
 import sortingButton from "../sortingButton/sortingButton"
 import styles from '../../../style.module.scss'
+import buttonStyles from './handleFavouriteArticles.module.scss'
 import libraryButton from "../../../utils/libraryButton/libraryButton"
 import articleWrapper from "../../../utils/articleWrapper/articleWrapper"
 
@@ -14,9 +15,10 @@ const handleFavouriteArticles = () => {
   navigationArticles.classList.add(styles.navigationArticles)
 
   const buttons = document.getElementById("buttons") as HTMLButtonElement
-  buttons.classList.add(styles.buttons)
+  buttons.classList.add(buttonStyles.buttons)
 
   const content = document.getElementById("content") as HTMLDivElement
+  content.classList.add(styles.content)
 
   const articlesIds = localStorage.getItem('ids') as string
   const parsedArticlesIds: number[] = JSON.parse(articlesIds)

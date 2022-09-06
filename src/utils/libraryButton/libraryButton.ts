@@ -1,4 +1,4 @@
-import { handleButtonText } from "../handleButtonText"
+import { handleButtonImage } from "../handleButtonImage";
 import { handleLibrarySavingClick } from "../handleLibrarySavingClick"
 import styles from "./libraryButton.module.scss";
 
@@ -7,7 +7,7 @@ const libraryButton = (id: number): HTMLButtonElement => {
 
   button.id = (id).toString()
   button.classList.add(styles.libraryButton)
-  button.innerText = handleButtonText(id)
+  button.innerHTML = handleButtonImage(id)
   button.addEventListener('click', () => handleLibrarySavingClick(id)
   )
 

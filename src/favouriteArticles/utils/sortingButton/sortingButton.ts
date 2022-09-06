@@ -5,7 +5,8 @@ const sortingButton = (sortingType: string): HTMLElement => {
 
   const button = document.createElement('button')
   button.classList.add(styles.button)
-  button.innerText = `${sortingType}: ascending`
+  const text = sortingType === 'publishedDate' ? 'By publication date' : 'By title'
+  button.innerText = `${text}: ascending`
 
   let isAscending = true
 
@@ -13,7 +14,7 @@ const sortingButton = (sortingType: string): HTMLElement => {
     const direction = isAscending ? "ascending" : "descending"
     handleSortingButton(sortingType, direction)
     isAscending = !isAscending
-    button.innerText = isAscending ? `${sortingType}: ascending` : `${sortingType}: descending`
+    button.innerText = isAscending ? `${text}: ascending` : `${text}: descending`
   })
 
   return button

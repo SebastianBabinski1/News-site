@@ -1,56 +1,83 @@
 @import '/src/styles/utils.scss';
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 200px;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: $brown;
-  color: white;
-  border-radius: 5px;
+.root {
+  background-color: rgba($color: #f8f8f6e8, $alpha: 1.0);
+}
 
-  &Label {
-    margin-bottom: 5px;
-  }
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1600px;
+  margin: 0 auto;
 
-  &Input {
-    border-radius: 5px;
-    border: none;
-  }
+  @media (min-width:1000px) {
+    grid-template-columns: 1fr 1fr;
 
-  &Button {
-    border: none;
-    border-radius: 5px;
-    margin-top: 5px;
-    padding: 2px 10px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: bisque;
-      transition: all 0.5s ease;
-    }
   }
 }
 
 .navigation {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 10px;
-  background-color: $brown;
-  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+  padding: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 10px;
+  font-size: 20px;
+
 
   &Articles {
-    margin-right: 20px;
+    margin: 0 20px;
+
+    &:hover {
+      text-shadow: 1px 1px 1px gray;
+    }
+  }
+
+  &Library {
+    &:hover {
+      text-shadow: 1px 1px 1px gray;
+    }
   }
 }
 
-.buttons {
+.form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 250px;
+  margin: 75px auto 0 auto;
   padding: 10px;
-  background-color: $brown;
-  color: white;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 10px;
+  border-radius: 5px;
+
+  &Input {
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 10px;
+    width: 50px;
+    margin: 10px 0;
+  }
+
+  &Button {
+    padding: 12px 14px;
+    margin: 0 10px;
+    background: #FF4742;
+    color: #FFFFFF;
+    border: 1px solid #FF4742;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 800;
+    line-height: 16px;
+
+    &:hover,
+    &:active {
+      background-color: initial;
+      color: #FF4742;
+    }
+  }
 }

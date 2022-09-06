@@ -1,6 +1,6 @@
-import { ButtonText } from "./handleLibrarySavingClick"
+import { addImage, removeImage } from "./buttonImages"
 
-export const handleButtonText = (id: number): string => {
+export const handleButtonImage = (id: number): string => {
 
   const articlesIds = localStorage.getItem('ids')
   const areArticlesIdsStored = !!articlesIds
@@ -9,11 +9,11 @@ export const handleButtonText = (id: number): string => {
     const parsedArticlesIds: number[] = JSON.parse(articlesIds)
 
     if (parsedArticlesIds.includes(id)) {
-      return ButtonText.REMOVE
+      return removeImage
     } else {
-      return ButtonText.ADD
+      return addImage
     }
   } else {
-    return ButtonText.ADD
+    return addImage
   }
 }

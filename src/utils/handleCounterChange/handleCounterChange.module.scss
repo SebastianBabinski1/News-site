@@ -1,11 +1,11 @@
 @import '/src/styles/utils.scss';
 
 .wrapper {
-  max-width: 200px;
+  max-width: 250px;
   margin: 10px auto;
   padding: 10px;
-  background-color: $brown;
-  color: white;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 10px;
   border-radius: 5px;
 }
 
